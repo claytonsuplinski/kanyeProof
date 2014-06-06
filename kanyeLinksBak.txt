@@ -1,0 +1,17 @@
+All;^&#*All of the Lights
+All of the Lights;^&#*Kanye
+San Francisco 49ers;^&#*California
+California;^&#*California Love
+California Love;^&#*Love Lockdown
+Love Lockdown;^&#*Kanye
+Lights;^&#*All of the Lights;^&#*Light
+Light;^&#*Lightning
+Lightning;^&#*Tampa Bay Lightning
+Tampa Bay Lightning;^&#*Tampa Bay Buccaneers
+Tampa Bay Buccaneers;^&#*NFC
+NFC;^&#*San Francisco 49ers
+Chicago Bears;^&#*Chicago Bulls
+Chicago Bulls;^&#*Derrick Rose
+Derrick Rose;^&#*N****s in Paris
+N****s in Paris;^&#*Kanye
+Minnesota Vikings;^&#*NFC
