@@ -7,56 +7,83 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
 <style>
 body{
-background-color:#858585; margin:0px; margin-top:0px; padding:0px; border:0px; outline:0px;font-family:calibri; 
+background-color:#d62323; margin:0px; margin-top:0px; padding:0px; border:0px; outline:0px;font-family:'Righteous'; 
 }
 #container{margin:0px;margin-top:0px;padding:0px; border:0px; outline:0px;}
 #header{
-color:white; text-align:center; vertical-align:top; background-color:#545454; background-image:url('kanyeHeaderBackground.png');background-size:100% 100%;background-repeat:no-repeat;
+color:white; text-align:center; vertical-align:top; background-color:#1b49be; background-size:100% 100%;background-repeat:no-repeat;
 margin-top:-25px; margin-left:0px; margin-right:0px;padding:0px; border:0px; outline:0px;}
 #titles, #titles2{font-size:24px;font-weight:bold;padding-top:0.5em;padding-bottom:0.5em;}
 table{border-width:0px; text-align: left; width: 100%;}
-th{color:#000045; border-color:#541111; border-width:4px; background-color:white; border-radius:4px; text-align:center; }
 td{font-size: 18px; border-width:0px; background:#cfcfcf; color:black; text-align:center; }
 td:hover{cursor:pointer;}
-#navigationElements tr td{font-size: 18px; border-width:0px; background:#333333;color:white; text-align:center;}
+#navigationElements tr td{font-size: 18; border-width:0px; background:#252525;color:white; text-align:center;}
 select{
-color:#cccccc; background:#333333;border-width:0px;font-size:20px;
+color:#f3f3f3; background:#252525;border-width:0px;font-size:20px;
 }
 select option{
-color:#cccccc; background:#333333;text-align:center;
+color:#f3f3f3; background:#252525;text-align:center;
 }
 #leftTitle2{
-	width:100%;position:absolute;text-align:center;background:#afafaf;color:black;
+	width:100%;position:absolute;text-align:center;background:#ffdf00;color:#252525;
 }
+/*
+red:#d62323
+yellow:#ffdf00
+blue:#1b49be
+*/
 #leftTitle2:hover{
-	background:orange;
+	background:black;
+	color:#ffdf00;
+	cursor:pointer;
 }
 #addDirectLinks:hover{
-	background:orange;color:black;
+	background:#1fcb4a;color:black;
 }
 #word{
-border-radius:15px;margin-left:-15%;margin-right:-15%;padding-left:1em;padding-right:1em;
-background: linear-gradient(top, #404040 0%, black 40%);
-background: -moz-linear-gradient(top, #404040  0%, black 40%);
-background: -webkit-linear-gradient(top, #404040 0%, black  40%);
+margin-left:-15%;margin-right:-15%;
+background:transparent;
+}
+
+#tags{
+}
+
+.ui-autocomplete{
+font-family:'righteous';
+background:#f3f3f3;
+color:#252525;
+text-align:center;
+}
+
+.ui-autocomplete .ui-menu-item .ui-state-focus{
+background:#252525;
+color:#f3f3f3;
+border-radius:0px;
+}
+
+.ui-menu{
+background:#f3f3f3;
 }
 </style>
 <title>Kanye Proof Search Engine</title>
 <meta content="blendTrans(Duration=1.0)" http-equiv="Page-Enter">
 </head>
 <body>
-<div id="logo" style="position:absolute;margin-top:25px;">
+<!--<div id="logo" style="position:absolute;margin-top:25px;">
 <img src="kanyeProofLogo.png" style="height:125px;width:125px;">
-</div>
+</div>-->
 <div id="container">
 <div id="header">
 <br>
 <br>
 <h1><span id="word">[current node in Kanye web]</span><br><br>
 <div class="ui-widget" style="height:100px;padding:0em;margin-bottom:-60px;">
-<input id="tags" style="height:25px;width:50%;padding:0em;font-size:16px;" placeholder="Search for Kanye Proofs">
+<input id="tags" 
+	style="height:25px;width:100%;padding:0em;font-size:16px;text-align:center;border:0px;background:silver;font-family:'righteous';text-transform:uppercase;" 
+	placeholder="Search for Kanye Proofs">
 </div></h1>
 </div>
 <div id="titles2">
@@ -68,7 +95,7 @@ Add new proof
 </div>
 <br><br>
 <div id="titles">
-<div id="leftTitle" style="width:50%;position:absolute;text-align:center;background:#333333;color:white;">
+<div id="leftTitle" style="width:50%;position:absolute;text-align:center;background:#252525;color:white;">
 Direct Links
 </div>
 <div id="rightTitle" style="width:50%;margin-left:50%;position:absolute;text-align:center;background:#cfcfcf;color:black;">
@@ -224,6 +251,7 @@ source: function(request, response) {
     },
 select: function(event, ui) {
 	updateNodeIndex(ui.item.label);
+	document.getElementById("tags").value="";
 	displayPage();
 	return false;
 }

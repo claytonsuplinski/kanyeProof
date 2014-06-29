@@ -7,32 +7,34 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
 <style>
 body{
-background-color:#858585; margin:0px; margin-top:0px; padding:0px; border:0px; outline:0px;font-family:calibri; 
+background-color:#ffdf00; margin:0px; margin-top:0px; padding:0px; border:0px; outline:0px;font-family:'righteous'; 
 }
 #container{margin:0px;margin-top:0px;padding:0px; border:0px; outline:0px;}
 #header{
-color:white; text-align:center; vertical-align:top; background-color:#545454; 
+color:#f3f3f3; text-align:center; vertical-align:top; background-color:#34ab00; 
 margin-top:-25px; margin-left:0px; margin-right:0px;padding:0px; border:0px; outline:0px;}
 table{border-width:0px; text-align: left; width: 100%;}
 th{color:#000045; border-color:#541111; border-width:4px; background-color:white; border-radius:4px; text-align:center; }
 td{font-size: 18px; border-width:0px; background:#cfcfcf; color:black; text-align:center; }
-#navigationElements tr td{font-size: 18px; border-width:0px; background:#333333;color:white; text-align:center;}
+#navigationElements tr td{font-size: 18px; border-width:0px; background:#252525;color:white; text-align:center;}
 select{
-color:#cccccc; background:#333333;border-width:0px;font-size:20px;
+color:#cccccc; background:#252525;border-width:0px;font-size:20px;
 }
 select option{
-color:#cccccc; background:#333333;text-align:center;
+color:#cccccc; background:#252525;text-align:center;
 }
 input{
-width:100%;height:100%;border-width:0px;background:#333333;color:white; text-align:center;font-size: 18px;font-weight:normal;
+width:100%;height:100%;border-width:0px;background:#252525;color:white; text-align:center;font-size: 20px;font-weight:normal;
+font-family:'righteous';
 }
 #submitButton{
 	width:100%;position:absolute;text-align:center;background:#afafaf;color:black;padding-top:0.2em;padding-bottom:0.2em;
 }
 #submitButton:hover{
-	background:orange;
+	background:#ff68dd;
 }
 #autoCompleteButton{
 	width:100%;position:absolute;text-align:center;background:#afafaf;color:black;padding-top:0.2em;padding-bottom:0.2em;margin-top:-5px;
@@ -41,10 +43,11 @@ width:100%;height:100%;border-width:0px;background:#333333;color:white; text-ali
 	background:orange;
 }
 #navigationElements tr td.delete{
-background-color:#772525;color:white;width:2.5%;
+background-color:#d62323;color:white;width:2.5%;
+cursor:pointer;
 }
 #navigationElements tr td.delete:hover{
-background:#cc4444;
+background:#e63131;
 }
 #navigationElements tr td.add{
 background-color:#257725;color:white;width:2.5%;
@@ -54,30 +57,46 @@ background:#44cc44;
 }
 #titles2{font-size:24px;font-weight:bold;padding-top:0.5em;padding-bottom:0.5em;}
 #leftTitle2{
-	width:100%;position:absolute;text-align:center;background:#afafaf;color:black;
+	width:100%;position:absolute;text-align:center;background:#1b49be;color:#f3f3f3;
 }
 #leftTitle2:hover{
-	background:orange;
+	background:#872187;
+}
+
+.ui-autocomplete{
+font-family:'righteous';
+background:#f3f3f3;
+color:#252525;
+text-align:center;
+}
+
+.ui-autocomplete .ui-menu-item .ui-state-focus{
+background:#252525;
+color:#f3f3f3;
+border-radius:0px;
+}
+
+.ui-menu{
+background:#f3f3f3;
 }
 </style>
 <title>Add Kanye Proof</title>
 <meta content="blendTrans(Duration=1.0)" http-equiv="Page-Enter">
 </head>
 <body>
+<!--
 <div id="logo" style="position:absolute;margin-top:25px;">
 <img src="kanyeProofLogo.png" style="height:125px;width:125px;">
 </div>
+-->
 <div id="container">
 <div id="header">
 <br>
 <br>
-<h1>Add New Direct Links for: <?php echo $_GET["name"];?><br><br>
-<div class="ui-widget" style="height:100px;padding:0em;margin-bottom:-60px;">
-<input id="tags" style="height:25px;width:50%;padding:0em;font-size:16px;" placeholder="Search for Kanye Proofs">
-</div></h1>
+<h1><?php echo $_GET["name"];?></h1>
 <br>
 </div>
-<div id="titles2">
+<div id="titles2" style="margin-top:-1%;">
 <a href="kanyeWeb.php" style="text-decoration:none;">
 <div id="leftTitle2">
 Back to Kanye Proof Search Engine
@@ -93,6 +112,10 @@ Back to Kanye Proof Search Engine
 <tr><td><input></input></td><td class="delete">-</td><td class="add">+</td></tr>-->
 <tr><td colspan="3">Kanye</td></tr><input style="display:none;" name="1" value="Kanye"></input><input style="display:none;" name="numWords" value="2"></input>
 </table>
+</div>
+<div class="ui-widget" style="height:100px;padding:0em;margin-bottom:-60px;text-align:center;">
+<input id="tags" style="height:30px;width:99.75%;padding:0em;font-size:20px;border:0px;font-family:'righteous';text-transform:uppercase;" 
+placeholder="Add Links">
 </div>
 <br>
 <div id="submitButton">
@@ -188,6 +211,7 @@ source: function(request, response) {
     },
 select: function(event, ui) {
 	addNode(ui.item.label);
+	document.getElementById("tags").value="";
 	displayPage();
 	return false;
 }
